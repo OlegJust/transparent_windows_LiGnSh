@@ -46,7 +46,9 @@ If two VSCode windows are open, you might see the following output:
 ## Automating the Script
 
 If you want the script to run automatically whenever VSCode is launched, you can create a .desktop file for VSCode in ~/.local/share/applications/.
+
 Create a .desktop file: Create or edit the .desktop file for VSCode, typically located at ~/.local/share/applications/code.desktop.
+
 Modify the Exec line: In the Exec section, add the script call before launching VSCode:
 
     Exec=/bin/bash -c "python3 /path/to/set_vscode_opacity.py & code"
