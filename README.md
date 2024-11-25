@@ -1,32 +1,46 @@
-VSCode Window Transparency Script
+# VSCode Window Transparency Script
+
 This script automatically sets the transparency of your VSCode windows when they are opened. It works with multiple VSCode windows and applies the transparency only to those that are not already transparent.
 
-Script Overview
+## Script Overview
+
 The script does the following:
+1. **Identifies VSCode windows**:
+   It uses the `wmctrl` command to get a list of open windows and selects those whose title contains "Visual Studio Code".
+   
+2. **Checks transparency**:
+   For each window, it checks whether transparency is already applied by using the `xprop` command to retrieve the `_NET_WM_WINDOW_OPACITY` value.
 
-Identifies VSCode windows: It uses the wmctrl command to get a list of open windows and selects those whose title contains "Visual Studio Code".
+3. **Applies transparency only if necessary**:
+   If the window does not have transparency set, the script applies the transparency using `xprop`.
 
-Checks transparency: For each window, it checks whether transparency is already applied by using the xprop command to retrieve the _NET_WM_WINDOW_OPACITY value.
+4. **Supports multiple windows**:
+   The script can handle multiple VSCode windows running simultaneously.
 
-Applies transparency only if necessary: If the window does not have transparency set, the script applies the transparency using xprop.
+## How to Use the Script
 
-Supports multiple windows: The script can handle multiple VSCode windows running simultaneously.
+1. **Install the required utilities**:
+   Make sure the `wmctrl` and `x11-utils` utilities are installed:
+   ```bash
+   sudo apt install wmctrl x11-utils```
 
-How to Use the Script
-Make sure the required utilities are installed:
+2. **Save the script: Save the script as set_vscode_opacity_multi.py.**
 
-sudo apt install wmctrl x11-utils
-Save the script as set_vscode_opacity_multi.py.
+3. **Make the script executable:
 
-Make the script executable:
-
+bash
+Копировать код
 chmod +x set_vscode_opacity_multi.py
-Run the script before or after opening VSCode:
+Run the script: Run the script before or after opening VSCode:
 
+bash
+Копировать код
 python3 set_vscode_opacity_multi.py
 Example Output:
 If two VSCode windows are open, you might see the following output:
 
+plaintext
+Копировать код
 Waiting for VSCode windows...
 Found 2 VSCode windows.
 Setting opacity for window 0x00c00004...
@@ -35,7 +49,11 @@ Window 0x00c0001a is already transparent.
 Automating the Script
 If you want the script to run automatically whenever VSCode is launched, you can create a .desktop file for VSCode in ~/.local/share/applications/.
 
-In the Exec section, add the script call before launching VSCode:
+Create a .desktop file: Create or edit the .desktop file for VSCode, typically located at ~/.local/share/applications/code.desktop.
 
+Modify the Exec line: In the Exec section, add the script call before launching VSCode:
+
+plaintext
+Копировать код
 Exec=/bin/bash -c "python3 /path/to/set_vscode_opacity.py & code"
-This will ensure that the script is executed every time you start VSCode, making it more convenient to apply the opacity automatically.
+This will ensure that the script is executed every time you start VSCode, automatically applying the opacity without any additional steps.
