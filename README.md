@@ -49,7 +49,6 @@ If you want the script to run automatically whenever VSCode is launched, you can
 Create a .desktop file: Create or edit the .desktop file for VSCode, typically located at ~/.local/share/applications/code.desktop.
 Modify the Exec line: In the Exec section, add the script call before launching VSCode:
 
-    ```bash
     Exec=/bin/bash -c "python3 /path/to/set_vscode_opacity.py & code"
 
 This will ensure that the script is executed every time you start VSCode, automatically applying the opacity without any additional steps.
