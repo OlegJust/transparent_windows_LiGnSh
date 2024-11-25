@@ -22,38 +22,35 @@ The script does the following:
 1. **Install the required utilities**:
    Make sure the `wmctrl` and `x11-utils` utilities are installed:
    ```bash
-   sudo apt install wmctrl x11-utils```
+   sudo apt install wmctrl x11-utils
 
 2. **Save the script: Save the script as set_vscode_opacity_multi.py.**
 
-3. **Make the script executable:
+3. **Make the script executable:**
+    ```bash
+    chmod +x set_vscode_opacity_multi.py
 
-bash
-Копировать код
-chmod +x set_vscode_opacity_multi.py
-Run the script: Run the script before or after opening VSCode:
+4. **Run the script: Run the script before or after opening VSCode:**
+    ```bash
+    python3 set_vscode_opacity_multi.py
 
-bash
-Копировать код
-python3 set_vscode_opacity_multi.py
-Example Output:
+**Example Output:**
 If two VSCode windows are open, you might see the following output:
 
-plaintext
-Копировать код
-Waiting for VSCode windows...
-Found 2 VSCode windows.
-Setting opacity for window 0x00c00004...
-Opacity for window 0x00c00004 set to 0xBFFFFFFF.
-Window 0x00c0001a is already transparent.
-Automating the Script
+    ```chmod
+    Waiting for VSCode windows...
+    Found 2 VSCode windows.
+    Setting opacity for window 0x00c00004...
+    Opacity for window 0x00c00004 set to 0xBFFFFFFF.
+    Window 0x00c0001a is already transparent.
+
+## Automating the Script
+
 If you want the script to run automatically whenever VSCode is launched, you can create a .desktop file for VSCode in ~/.local/share/applications/.
-
 Create a .desktop file: Create or edit the .desktop file for VSCode, typically located at ~/.local/share/applications/code.desktop.
-
 Modify the Exec line: In the Exec section, add the script call before launching VSCode:
 
-plaintext
-Копировать код
-Exec=/bin/bash -c "python3 /path/to/set_vscode_opacity.py & code"
+    ```bash
+    Exec=/bin/bash -c "python3 /path/to/set_vscode_opacity.py & code"
+
 This will ensure that the script is executed every time you start VSCode, automatically applying the opacity without any additional steps.
