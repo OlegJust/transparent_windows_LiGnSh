@@ -54,3 +54,8 @@ Modify the Exec line: In the Exec section, add the script call before launching 
     Exec=/bin/bash -c "python3 /path/to/set_vscode_opacity.py & code"
 
 This will ensure that the script is executed every time you start VSCode, automatically applying the opacity without any additional steps.
+
+## Solo code teminal 
+
+   ```bash
+   xprop -format _NET_WM_WINDOW_OPACITY 32c -set _NET_WM_WINDOW_OPACITY 0xCFFFFFFF
